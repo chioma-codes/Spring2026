@@ -2,6 +2,7 @@ import './style.css'
 import * as THREE from 'three' 
 import {addDefaultMeshes, addStandardMeshes } from './addDefaultMeshes.js'
 import { addLight } from '../addLight.js';
+import Model from './model.js'
 
 const scene = new THREE.Scene();
 // (FOV, ASPECT, RATIO, NEAR, FAR)
@@ -38,13 +39,28 @@ scene.add(meshes.standard);
 
 //  console.log(meshes)
 // console.log(meshes.test)
-
+instances()
 resize()
   animate()
 }
 function resize (){
 
 }
+
+function instances(){
+  const flower = new Model({
+    url: './bouquet.glb',
+    scene: scene,
+    meshes: meshes,
+    scale: new THREE.Vector3(2,2,2),
+    position: new THREE.Vector3(0,-0.8,3),
+    replace: true 
+
+  })
+  flower.init()
+
+}
+
 
 //ROOOOOTATIONS
 function animate(){
